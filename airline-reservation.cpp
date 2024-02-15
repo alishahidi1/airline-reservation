@@ -14,6 +14,31 @@ class Management{
         }
 };
 
+class details{
+    public:
+        static string name, gender;
+        int phoneNo;
+        int age;
+        string add;
+        static int cID;
+        char arr[100];
+
+        void information(){
+            cout<<"\nEnter the customer ID: ";
+            cin>>cID;
+            cout<<"\nEnter the name: ";
+            cin>>name;
+            cout<<"\nEnter the age: ";
+            cin>>age;
+            cout<<"\nEnter the address: ";
+            cin>>add;
+            cout<<"\nEnter the gender:";
+            cin>>gender;
+
+            cout<<"Your details are saved with us\n";
+        }
+};
+
 void mainMenu(){
     int lchoice;
     int schoice;
