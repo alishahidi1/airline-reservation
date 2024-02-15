@@ -78,7 +78,7 @@ class registration{
                     cout<<"\nSelect the flight you want to book: ";
                     cin >> choice1;
 
-                    if(choice == 1){
+                    if(choice1 == 1){
                         charges = 980;
                     }
                     else{
@@ -95,7 +95,7 @@ class registration{
                     cout<<"\nSelect the flight you want to book: ";
                     cin >> choice1;
 
-                    if(choice == 1){
+                    if(choice1 == 1){
                         charges = 1500;
                     }
                     else{
@@ -112,7 +112,7 @@ class registration{
                     cout<<"\nSelect the flight you want to book: ";
                     cin >> choice1;
 
-                    if(choice == 1){
+                    if(choice1 == 1){
                         charges = 1400;
                     }
                     else{
@@ -129,7 +129,7 @@ class registration{
                     cout<<"\nSelect the flight you want to book: ";
                     cin >> choice1;
 
-                    if(choice == 1){
+                    if(choice1 == 1){
                         charges = 780;
                     }
                     else{
@@ -146,7 +146,7 @@ class registration{
                     cout<<"\nSelect the flight you want to book: ";
                     cin >> choice1;
 
-                    if(choice == 1){
+                    if(choice1 == 1){
                         charges = 735;
                     }
                     else{
@@ -163,7 +163,7 @@ class registration{
                     cout<<"\nSelect the flight you want to book: ";
                     cin >> choice1;
 
-                    if(choice == 1){
+                    if(choice1 == 1){
                         charges = 980;
                     }
                     else{
@@ -180,6 +180,66 @@ class registration{
             cin >> back;
             mainMenu();
             
+        }
+};
+
+float registration::charges;
+int registration::choice;
+
+class ticket : public registration, details
+{
+    public:
+        void bill(){
+            string destination = "";
+            ofstream outf("records.txt");
+            {
+                outf<<"____________Fast Airlines_______________"<<endl;
+                outf<<"________________Ticket__________________"<<endl;
+                outf<<"________________________________________"<<endl;
+
+                outf<<"Customer ID:"<<details::cID<<endl;
+                outf<<"Customer Name:"<<details::name<<endl;
+                outf<<"Customer Gender:"<<details::gender<<endl;
+                outf<<"\tDescription\n\n";
+
+                switch(registration::choice){
+                    case 1:
+                        destination = "Emirates";
+                    
+                    case 2:
+                        destination = "Canada";
+                    
+                    case 3:
+                        destination = "UK";
+
+                    case 4:
+                        destination = "USA";
+                    
+                    case 5:
+                        destination = "Australia";
+
+                    case 6:
+                        destination = "Europe";
+                }
+
+                outf<<"Destination:\t\t"<<destination<<endl;
+                outf<<"Flight cost: \t\t"<<registration::charges<<endl;
+
+            }
+            outf.close();
+        }
+        void display(){
+            ifstream ifs("records.txt");
+            {
+                if(!ifs){
+                    cout<<"File error!"<<endl;
+                }
+                while(!ifs.eof()){
+                    ifs.getline(arr, 100);
+                    cout<<arr<<endl;
+                }
+            }
+            ifs.close();
         }
 };
 
